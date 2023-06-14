@@ -18,17 +18,27 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## Watch Locations Exercise
 
-To learn more about Next.js, take a look at the following resources:
+This is a basic proof of concept for displaying a list of previous watch locations upon request by clicking on a button.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Requirements / Roadmap List
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+1. create faker getLastLocation API 
+- should include the following fields 
+-- address {street, city, state}
+-- executionTime
 
-## Deploy on Vercel
+2. create function to make API call
+- define timestamp
+- add item to results array w/ only timestamp
+- await api call
+- update item in results w/ returned data
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. button onClick to run API call function
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+4. display a list of memoized results 
+- sort results from newest to oldest 
+-- `results.sort((a, b) => (a.timestamp < b.timestamp) ? 1 : -1);`
+- should display "Loading..." if the item exists in list but `!result.executionTime`
+
